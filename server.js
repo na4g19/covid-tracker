@@ -51,7 +51,7 @@ fetch(URL, fetchSettings)
     .then(res => res.json())
     .then((json) => structureData(json))
     .catch(err => {
-        console.log(`Encountered an error while trying to retrieve data from ${url}`);
+        console.log(`Encountered an error while trying to retrieve data from ${URL}`);
     });
 
 app.listen(PORT, () => {
