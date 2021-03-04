@@ -1,0 +1,14 @@
+.dropdown-menu {
+    height: 200px;
+    width: 350px;
+    overflow-y: scroll;
+}
+
+#dropdown-button {
+    width: 350px;
+    height: 5vh;
+}
+
+#covid-chart {
+    height: 95vh;
+}
