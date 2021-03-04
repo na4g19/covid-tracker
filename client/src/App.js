@@ -4,6 +4,8 @@ import { DropdownButton, Dropdown } from 'react-bootstrap';
 import axios from 'axios';
 import './main.css';
 
+const API_ENDPOINT = 'http://localhost:5000';
+
 export default class App extends Component {
     render() {
         return (
@@ -48,7 +50,7 @@ class CovidChart extends Component {
     }
 
     updateChart(country) {
-        axios.get(`/api/countries/${country}`)
+        axios.get(`${API_ENDPOINT}/api/countries/${country}`)
             .then(res => {
                 const data = res.data.countryData;
                 const newDatasets = this.state.datasets.slice();
@@ -100,7 +102,7 @@ class CountryDropdown extends Component {
     }
 
     async componentDidMount() {
-        await axios.get('/api/countries')
+        await axios.get(`${API_ENDPOINT}/api/countries`)
               .then(res => {
                   this.setState({ countries: res.data.countryNames });
               })

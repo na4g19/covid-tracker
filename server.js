@@ -5,10 +5,10 @@ const api = require('./routes/routes');
 
 const app = express();
 app.use('/api/', api);
-app.use(express.static(path.join(__dirname, '../client/build')));
+app.use(express.static(path.join(__dirname, './client/build')));
 
-const port = 5000;
-const url = 'https://opendata.ecdc.europa.eu/covid19/nationalcasedeath/json/';
+const PORT = 5000;
+const URL = 'https://opendata.ecdc.europa.eu/covid19/nationalcasedeath/json/';
 const fetchSettings = { method: 'Get' };
 
 const structureData = (json) => {
@@ -47,13 +47,13 @@ const isDataValid= (data) => {
                data.deaths.map(entry => entry.yearWeek).join(',');
 }
 
-fetch(url, fetchSettings)
+fetch(URL, fetchSettings)
     .then(res => res.json())
     .then((json) => structureData(json))
     .catch(err => {
         console.log(`Encountered an error while trying to retrieve data from ${url}`);
     });
 
-app.listen(port, () => {
-    console.log(`Listening at http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Listening at http://localhost:${PORT}`);
 });
